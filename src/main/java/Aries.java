@@ -1,10 +1,11 @@
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Aries {
     public static void main(String[] args) {
         String line = "____________________________________";
-        Task[] tasks = new Task[100];
-        int taskCount = 0;
+        List<Task> tasks = new ArrayList<>();
 
         System.out.println(line);
         System.out.println("Hello! I'm Aries.");
@@ -38,15 +39,15 @@ public class Aries {
                     case "list":
                         System.out.println(line);
                         System.out.println("Here are the tasks in your list:");
-                        for (int i = 0; i < taskCount; i++) {
-                            System.out.println((i + 1) + ". " + tasks[i]);
+                        for (int i = 0; i < tasks.size(); i++) {
+                            System.out.println((i + 1) + ". " + tasks.get(i));
                         }
                         System.out.println(line);
                         break;
 
                     // mark a task as done
                     case "mark":
-                        Task taskToMark = getTaskByIndex(parts, taskCount, tasks);
+                        Task taskToMark = getTaskByIndex(parts, tasks.size(), tasks);
                         taskToMark.markAsDone();
                         System.out.println(line);
                         System.out.println("Nice! I've marked this task as done:");
@@ -56,7 +57,7 @@ public class Aries {
 
                     // unmark a task
                     case "unmark":
-                        Task taskToUnmark = getTaskByIndex(parts, taskCount, tasks);
+                        Task taskToUnmark = getTaskByIndex(parts, tasks.size(), tasks);
                         taskToUnmark.unmark();
                         System.out.println(line);
                         System.out.println("OK, I've marked this task as not done yet:");
@@ -71,11 +72,12 @@ public class Aries {
                         }
 
                         String toDoDesc = parts[1];
-                        tasks[taskCount++] = new Todo(toDoDesc);
+                        Task t = new Todo(toDoDesc);
+                        tasks.add(t);
                         System.out.println(line);
                         System.out.println("Got it. I've added this task:");
-                        System.out.println(tasks[taskCount - 1]);
-                        System.out.println("Now you have " + taskCount + " tasks in the list.");
+                        System.out.println(tasks.get(tasks.size() - 1));
+                        System.out.println("Now you have " + tasks.size() + " tasks in the list.");
                         System.out.println(line);
                         break;
 
@@ -92,11 +94,12 @@ public class Aries {
 
                         String ddlDesc = ddlParts[0];
                         String ddlBy = ddlParts[1];
-                        tasks[taskCount++] = new Deadline(ddlDesc, ddlBy);
+                        t = new Deadline(ddlDesc, ddlBy);
+                        tasks.add(t);
                         System.out.println(line);
                         System.out.println("Got it. I've added this task:");
-                        System.out.println(tasks[taskCount - 1]);
-                        System.out.println("Now you have " + taskCount + " tasks in the list.");
+                        System.out.println(tasks.get(tasks.size() - 1));
+                        System.out.println("Now you have " + tasks.size() + " tasks in the list.");
                         System.out.println(line);
                         break;
                     
@@ -114,11 +117,12 @@ public class Aries {
                         String eventDesc = eventParts[0];
                         String from = eventParts[1];
                         String to = eventParts[2];
-                        tasks[taskCount++] = new Events(eventDesc, from, to);
+                        t = new Events(eventDesc, from, to);
+                        tasks.add(t);
                         System.out.println(line);
                         System.out.println("Got it. I've added this task:");
-                        System.out.println(tasks[taskCount - 1]);
-                        System.out.println("Now you have " + taskCount + " tasks in the list.");
+                        System.out.println(tasks.get(tasks.size() - 1));
+                        System.out.println("Now you have " + tasks.size() + " tasks in the list.");
                         System.out.println(line);
                         break;
 
@@ -134,7 +138,7 @@ public class Aries {
         }
     }
 
-    private static Task getTaskByIndex(String[] parts, int taskCount, Task[] tasks) throws AriesException {
+    private static Task getTaskByIndex(String[] parts, int taskCount, List<Task> tasks) throws AriesException {
         if (parts.length < 2) {
             throw new AriesException("Please specify task number. e.g., mark 1");
         }
@@ -154,6 +158,6 @@ public class Aries {
             throw new AriesException("Task number is out of range.");
         }
 
-        return tasks[index];
+        return tasks.get(index);
     }
 }
