@@ -66,6 +66,10 @@ public class Aries {
 
                     // add todo
                     case "todo":
+                        if (parts.length < 2 || parts[1].isEmpty()) {
+                            throw new AriesException("OOPS!!! The description of a todo cannot be empty.");
+                        }
+
                         String toDoDesc = parts[1];
                         tasks[taskCount++] = new Todo(toDoDesc);
                         System.out.println(line);
@@ -77,6 +81,10 @@ public class Aries {
 
                     // add deadline task
                     case "deadline":
+                        if (parts.length < 2 || parts[1].isEmpty()) {
+                            throw new AriesException("OOPS!!! The description of a deadline cannot be empty.");
+                        }
+
                         String[] ddlParts = parts[1].split(" /by ");
                         String ddlDesc = ddlParts[0];
                         String ddlBy = ddlParts[1];
@@ -90,6 +98,10 @@ public class Aries {
                     
                     // add event task
                     case "event":
+                        if (parts.length < 2 || parts[1].isEmpty()) {
+                            throw new AriesException("OOPS!!! The description of an event cannot be empty.");
+                        }
+
                         String[] eventParts = parts[1].split(" /from | /to ");
                         String eventDesc = eventParts[0];
                         String from = eventParts[1];
