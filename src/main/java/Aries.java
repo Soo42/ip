@@ -28,5 +28,7 @@ public class Aries {
             System.out.println(input);
             System.out.println(line);
         }
+
+        scanner.close();
     }
 }
