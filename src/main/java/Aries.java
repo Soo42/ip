@@ -16,93 +16,100 @@ public class Aries {
 
         while (true) {
             String input = scanner.nextLine();
-            String[] parts = input.split(" ", 2);
-            String command = parts[0];
 
-            switch (command.toLowerCase()) {
-                // exit the program
-                case "bye":
-                    System.out.println(line);
-                    System.out.println("Bye. Hope to see you again soon!");
-                    System.out.println(line);
-                    scanner.close();
-                    return;
+            try {
+                if (input.isEmpty()) {
+                    throw new AriesException("Please enter a command.");
+                }
 
-                // print the list of tasks
-                case "list":
-                    System.out.println(line);
-                    System.out.println("Here are the tasks in your list:");
-                    for (int i = 0; i < taskCount; i++) {
-                        System.out.println((i + 1) + ". " + tasks[i]);
-                    }
-                    System.out.println(line);
-                    break;
+                String[] parts = input.split(" ", 2);
+                String command = parts[0];
+            
+                switch (command.toLowerCase()) {
+                    // exit the program
+                    case "bye":
+                        System.out.println(line);
+                        System.out.println("Bye. Hope to see you again soon!");
+                        System.out.println(line);
+                        scanner.close();
+                        return;
 
-                // mark a task as done
-                case "mark":
-                    int index = Integer.parseInt(parts[1]) - 1;
-                    tasks[index].markAsDone();
-                    System.out.println(line);
-                    System.out.println("Nice! I've marked this task as done:");
-                    System.out.println(tasks[index]);
-                    System.out.println(line);
-                    break;
+                    // print the list of tasks
+                    case "list":
+                        System.out.println(line);
+                        System.out.println("Here are the tasks in your list:");
+                        for (int i = 0; i < taskCount; i++) {
+                            System.out.println((i + 1) + ". " + tasks[i]);
+                        }
+                        System.out.println(line);
+                        break;
 
-                // unmark a task
-                case "unmark":
-                    index = Integer.parseInt(parts[1]) - 1;
-                    tasks[index].unmark();
-                    System.out.println(line);
-                    System.out.println("OK, I've marked this task as not done yet:");
-                    System.out.println(tasks[index]);
-                    System.out.println(line);
-                    break;
+                    // mark a task as done
+                    case "mark":
+                        int index = Integer.parseInt(parts[1]) - 1;
+                        tasks[index].markAsDone();
+                        System.out.println(line);
+                        System.out.println("Nice! I've marked this task as done:");
+                        System.out.println(tasks[index]);
+                        System.out.println(line);
+                        break;
 
-                // add todo
-                case "todo":
-                    String toDoDesc = parts[1];
-                    tasks[taskCount++] = new Todo(toDoDesc);
-                    System.out.println(line);
-                    System.out.println("Got it. I've added this task:");
-                    System.out.println(tasks[taskCount - 1]);
-                    System.out.println("Now you have " + taskCount + " tasks in the list.");
-                    System.out.println(line);
-                    break;
+                    // unmark a task
+                    case "unmark":
+                        index = Integer.parseInt(parts[1]) - 1;
+                        tasks[index].unmark();
+                        System.out.println(line);
+                        System.out.println("OK, I've marked this task as not done yet:");
+                        System.out.println(tasks[index]);
+                        System.out.println(line);
+                        break;
 
-                // add deadline task
-                case "deadline":
-                    String[] ddlParts = parts[1].split(" /by ");
-                    String ddlDesc = ddlParts[0];
-                    String ddlBy = ddlParts[1];
-                    tasks[taskCount++] = new Deadline(ddlDesc, ddlBy);
-                    System.out.println(line);
-                    System.out.println("Got it. I've added this task:");
-                    System.out.println(tasks[taskCount - 1]);
-                    System.out.println("Now you have " + taskCount + " tasks in the list.");
-                    System.out.println(line);
-                    break;
-                
-                // add event task
-                case "event":
-                    String[] eventParts = parts[1].split(" /from | /to ");
-                    String eventDesc = eventParts[0];
-                    String from = eventParts[1];
-                    String to = eventParts[2];
-                    tasks[taskCount++] = new Events(eventDesc, from, to);
-                    System.out.println(line);
-                    System.out.println("Got it. I've added this task:");
-                    System.out.println(tasks[taskCount - 1]);
-                    System.out.println("Now you have " + taskCount + " tasks in the list.");
-                    System.out.println(line);
-                    break;
+                    // add todo
+                    case "todo":
+                        String toDoDesc = parts[1];
+                        tasks[taskCount++] = new Todo(toDoDesc);
+                        System.out.println(line);
+                        System.out.println("Got it. I've added this task:");
+                        System.out.println(tasks[taskCount - 1]);
+                        System.out.println("Now you have " + taskCount + " tasks in the list.");
+                        System.out.println(line);
+                        break;
 
-                // add the input to the tasks list
-                default:
-                    tasks[taskCount++] = new Task(input);
-                    System.out.println(line);
-                    System.out.println("added: " + input);
-                    System.out.println(line);
-                    break;
+                    // add deadline task
+                    case "deadline":
+                        String[] ddlParts = parts[1].split(" /by ");
+                        String ddlDesc = ddlParts[0];
+                        String ddlBy = ddlParts[1];
+                        tasks[taskCount++] = new Deadline(ddlDesc, ddlBy);
+                        System.out.println(line);
+                        System.out.println("Got it. I've added this task:");
+                        System.out.println(tasks[taskCount - 1]);
+                        System.out.println("Now you have " + taskCount + " tasks in the list.");
+                        System.out.println(line);
+                        break;
+                    
+                    // add event task
+                    case "event":
+                        String[] eventParts = parts[1].split(" /from | /to ");
+                        String eventDesc = eventParts[0];
+                        String from = eventParts[1];
+                        String to = eventParts[2];
+                        tasks[taskCount++] = new Events(eventDesc, from, to);
+                        System.out.println(line);
+                        System.out.println("Got it. I've added this task:");
+                        System.out.println(tasks[taskCount - 1]);
+                        System.out.println("Now you have " + taskCount + " tasks in the list.");
+                        System.out.println(line);
+                        break;
+
+                    // add the input to the tasks list
+                    default:
+                        throw new AriesException(" OOPS!!! I'm sorry, but I don't know what that means :-(");
+                }
+            } catch (AriesException e) {
+                System.out.println(e.getMessage());
+            } catch (Exception e) {
+                System.out.println("Unexpected error: " + e.getMessage());
             }
         }
     }
