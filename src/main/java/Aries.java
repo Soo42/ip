@@ -31,6 +31,7 @@ public class Aries {
                 // print the list of tasks
                 case "list":
                     System.out.println(line);
+                    System.out.println("Here are the tasks in your list:");
                     for (int i = 0; i < taskCount; i++) {
                         System.out.println((i + 1) + ". " + tasks[i]);
                     }
@@ -54,6 +55,17 @@ public class Aries {
                     System.out.println(line);
                     System.out.println("OK, I've marked this task as not done yet:");
                     System.out.println(tasks[index]);
+                    System.out.println(line);
+                    break;
+
+                // add todo
+                case "todo":
+                    String toDoDesc = parts[1];
+                    tasks[taskCount++] = new Todo(toDoDesc);
+                    System.out.println(line);
+                    System.out.println("Got it. I've added this task:");
+                    System.out.println(tasks[taskCount - 1]);
+                    System.out.println("Now you have " + taskCount + " tasks in the list.");
                     System.out.println(line);
                     break;
 
