@@ -16,8 +16,10 @@ public class Aries {
 
         while (true) {
             String input = scanner.nextLine();
+            String[] parts = input.split(" ", 2);
+            String command = parts[0];
 
-            switch (input.toLowerCase()) {
+            switch (command.toLowerCase()) {
                 // exit the program
                 case "bye":
                     System.out.println(line);
@@ -33,6 +35,27 @@ public class Aries {
                         System.out.println((i + 1) + ". " + tasks[i]);
                     }
                     System.out.println(line);
+                    break;
+
+                // mark a task as done
+                case "mark":
+                    int index = Integer.parseInt(parts[1]) - 1;
+                    tasks[index].markAsDone();
+                    System.out.println(line);
+                    System.out.println("Nice! I've marked this task as done:");
+                    System.out.println(tasks[index]);
+                    System.out.println(line);
+                    break;
+
+                // unmark a task
+                case "unmark":
+                    index = Integer.parseInt(parts[1]) - 1;
+                    tasks[index].unmark();
+                    System.out.println(line);
+                    System.out.println("OK, I've marked this task as not done yet:");
+                    System.out.println(tasks[index]);
+                    System.out.println(line);
+                    break;
 
                 // add the input to the tasks list
                 default:
