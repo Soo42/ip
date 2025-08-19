@@ -46,21 +46,21 @@ public class Aries {
 
                     // mark a task as done
                     case "mark":
-                        int index = Integer.parseInt(parts[1]) - 1;
-                        tasks[index].markAsDone();
+                        Task taskToMark = getTaskByIndex(parts, taskCount, tasks);
+                        taskToMark.markAsDone();
                         System.out.println(line);
                         System.out.println("Nice! I've marked this task as done:");
-                        System.out.println(tasks[index]);
+                        System.out.println(taskToMark);
                         System.out.println(line);
                         break;
 
                     // unmark a task
                     case "unmark":
-                        index = Integer.parseInt(parts[1]) - 1;
-                        tasks[index].unmark();
+                        Task taskToUnmark = getTaskByIndex(parts, taskCount, tasks);
+                        taskToUnmark.unmark();
                         System.out.println(line);
                         System.out.println("OK, I've marked this task as not done yet:");
-                        System.out.println(tasks[index]);
+                        System.out.println(taskToUnmark);
                         System.out.println(line);
                         break;
 
@@ -112,5 +112,28 @@ public class Aries {
                 System.out.println("Unexpected error: " + e.getMessage());
             }
         }
+    }
+
+    private static Task getTaskByIndex(String[] parts, int taskCount, Task[] tasks) throws AriesException {
+        if (parts.length < 2) {
+            throw new AriesException("Please specify task number. e.g., mark 1");
+        }
+
+        if (taskCount == 0) {
+            throw new AriesException("No tasks available to mark.");
+        }
+
+        int index;
+        try {
+            index = Integer.parseInt(parts[1]) - 1;
+        } catch (NumberFormatException e) {
+            throw new AriesException("Please enter a valid task number.");
+        }
+
+        if (index < 0 || index >= taskCount) {
+            throw new AriesException("Task number is out of range.");
+        }
+
+        return tasks[index];
     }
 }
