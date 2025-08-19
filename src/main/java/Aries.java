@@ -4,9 +4,11 @@ import java.util.Scanner;
 
 public class Aries {
     public static void main(String[] args) {
+        // Initialize variables
         String line = "____________________________________";
         List<Task> tasks = new ArrayList<>();
 
+        // Print welcome message
         System.out.println(line);
         System.out.println("Hello! I'm Aries.");
         System.out.println("What can I do for you?");
@@ -126,6 +128,17 @@ public class Aries {
                         System.out.println(line);
                         break;
 
+                    // delete a task by index
+                    case "delete":
+                        Task taskToDelete = getTaskByIndex(parts, tasks.size(), tasks);
+                        tasks.remove(taskToDelete);
+                        System.out.println(line);
+                        System.out.println("Noted. I've removed this task:");
+                        System.out.println(taskToDelete);
+                        System.out.println("Now you have " + tasks.size() + " tasks in the list.");
+                        System.out.println(line);
+                        break;
+
                     // add the input to the tasks list
                     default:
                         throw new AriesException(" OOPS!!! I'm sorry, but I don't know what that means :-(");
@@ -140,11 +153,11 @@ public class Aries {
 
     private static Task getTaskByIndex(String[] parts, int taskCount, List<Task> tasks) throws AriesException {
         if (parts.length < 2) {
-            throw new AriesException("Please specify task number. e.g., mark 1");
+            throw new AriesException("Please specify task number. e.g., mark 1, unmark 2, delete 3");
         }
 
         if (taskCount == 0) {
-            throw new AriesException("No tasks available to mark.");
+            throw new AriesException("No tasks available.");
         }
 
         int index;
