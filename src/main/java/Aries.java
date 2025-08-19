@@ -81,6 +81,20 @@ public class Aries {
                     System.out.println("Now you have " + taskCount + " tasks in the list.");
                     System.out.println(line);
                     break;
+                
+                // add event task
+                case "event":
+                    String[] eventParts = parts[1].split(" /from | /to ");
+                    String eventDesc = eventParts[0];
+                    String from = eventParts[1];
+                    String to = eventParts[2];
+                    tasks[taskCount++] = new Events(eventDesc, from, to);
+                    System.out.println(line);
+                    System.out.println("Got it. I've added this task:");
+                    System.out.println(tasks[taskCount - 1]);
+                    System.out.println("Now you have " + taskCount + " tasks in the list.");
+                    System.out.println(line);
+                    break;
 
                 // add the input to the tasks list
                 default:
