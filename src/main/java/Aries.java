@@ -69,6 +69,19 @@ public class Aries {
                     System.out.println(line);
                     break;
 
+                // add deadline task
+                case "deadline":
+                    String[] ddlParts = parts[1].split(" /by ");
+                    String ddlDesc = ddlParts[0];
+                    String ddlBy = ddlParts[1];
+                    tasks[taskCount++] = new Deadline(ddlDesc, ddlBy);
+                    System.out.println(line);
+                    System.out.println("Got it. I've added this task:");
+                    System.out.println(tasks[taskCount - 1]);
+                    System.out.println("Now you have " + taskCount + " tasks in the list.");
+                    System.out.println(line);
+                    break;
+
                 // add the input to the tasks list
                 default:
                     tasks[taskCount++] = new Task(input);
