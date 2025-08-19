@@ -3,7 +3,7 @@ import java.util.Scanner;
 public class Aries {
     public static void main(String[] args) {
         String line = "____________________________________";
-        String[] tasks = new String[100];
+        Task[] tasks = new Task[100];
         int taskCount = 0;
 
         System.out.println(line);
@@ -32,7 +32,7 @@ public class Aries {
                 System.out.println(line);
             } else {
                 // add the input to the tasks list
-                tasks[taskCount++] = input;
+                tasks[taskCount++] = new Task(input);
 
                 System.out.println(line);
                 System.out.println("added: " + input);
