@@ -76,11 +76,7 @@ public class Aries {
                         String toDoDesc = parts[1];
                         Task t = new Todo(toDoDesc);
                         tasks.add(t);
-                        System.out.println(line);
-                        System.out.println("Got it. I've added this task:");
-                        System.out.println(tasks.get(tasks.size() - 1));
-                        System.out.println("Now you have " + tasks.size() + " tasks in the list.");
-                        System.out.println(line);
+                        printAddTask(line, tasks);
                         break;
 
                     // add deadline task
@@ -98,11 +94,7 @@ public class Aries {
                         String ddlBy = ddlParts[1];
                         t = new Deadline(ddlDesc, ddlBy);
                         tasks.add(t);
-                        System.out.println(line);
-                        System.out.println("Got it. I've added this task:");
-                        System.out.println(tasks.get(tasks.size() - 1));
-                        System.out.println("Now you have " + tasks.size() + " tasks in the list.");
-                        System.out.println(line);
+                        printAddTask(line, tasks);
                         break;
                     
                     // add event task
@@ -121,11 +113,7 @@ public class Aries {
                         String to = eventParts[2];
                         t = new Events(eventDesc, from, to);
                         tasks.add(t);
-                        System.out.println(line);
-                        System.out.println("Got it. I've added this task:");
-                        System.out.println(tasks.get(tasks.size() - 1));
-                        System.out.println("Now you have " + tasks.size() + " tasks in the list.");
-                        System.out.println(line);
+                        printAddTask(line, tasks);
                         break;
 
                     // delete a task by index
@@ -149,6 +137,15 @@ public class Aries {
                 System.out.println("Unexpected error: " + e.getMessage());
             }
         }
+    }
+
+    // Helper method to print
+    private static void printAddTask(String line, List<Task> tasks) {
+        System.out.println(line);
+        System.out.println("Got it. I've added this task:");
+        System.out.println(tasks.get(tasks.size() - 1));
+        System.out.println("Now you have " + tasks.size() + " tasks in the list.");
+        System.out.println(line);
     }
 
     private static Task getTaskByIndex(String[] parts, int taskCount, List<Task> tasks) throws AriesException {
