@@ -86,6 +86,10 @@ public class Aries {
                         }
 
                         String[] ddlParts = parts[1].split(" /by ");
+                        if (ddlParts.length < 2) {
+                            throw new AriesException("OOPS!!! The deadline format should be: deadline <description> /by <date/time>");
+                        }
+
                         String ddlDesc = ddlParts[0];
                         String ddlBy = ddlParts[1];
                         tasks[taskCount++] = new Deadline(ddlDesc, ddlBy);
@@ -103,6 +107,10 @@ public class Aries {
                         }
 
                         String[] eventParts = parts[1].split(" /from | /to ");
+                        if (eventParts.length < 3) {
+                            throw new AriesException("OOPS!!! The event format should be: event <description> /from <start time> /to <end time>");
+                        }
+
                         String eventDesc = eventParts[0];
                         String from = eventParts[1];
                         String to = eventParts[2];
