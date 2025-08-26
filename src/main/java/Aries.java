@@ -4,15 +4,11 @@ import java.util.Scanner;
 
 public class Aries {
     public static void main(String[] args) {
-        // Initialize variables
-        String line = "____________________________________";
+        Ui Ui = new Ui();
         List<Task> tasks = new ArrayList<>();
 
         // Print welcome message
-        System.out.println(line);
-        System.out.println("Hello! I'm Aries.");
-        System.out.println("What can I do for you?");
-        System.out.println(line);
+        Ui.greet();
 
         // Scanner is inspired by ex3 in cs2030s
         Scanner scanner = new Scanner(System.in);
@@ -31,40 +27,27 @@ public class Aries {
                 switch (command.toLowerCase()) {
                     // exit the program
                     case "bye":
-                        System.out.println(line);
-                        System.out.println("Bye. Hope to see you again soon!");
-                        System.out.println(line);
+                        Ui.exit();
                         scanner.close();
                         return;
 
                     // print the list of tasks
                     case "list":
-                        System.out.println(line);
-                        System.out.println("Here are the tasks in your list:");
-                        for (int i = 0; i < tasks.size(); i++) {
-                            System.out.println((i + 1) + ". " + tasks.get(i));
-                        }
-                        System.out.println(line);
+                        Ui.showTaskList(tasks);
                         break;
 
                     // mark a task as done
                     case "mark":
                         Task taskToMark = getTaskByIndex(parts, tasks.size(), tasks);
                         taskToMark.markAsDone();
-                        System.out.println(line);
-                        System.out.println("Nice! I've marked this task as done:");
-                        System.out.println(taskToMark);
-                        System.out.println(line);
+                        Ui.marked(taskToMark, true);
                         break;
 
                     // unmark a task
                     case "unmark":
                         Task taskToUnmark = getTaskByIndex(parts, tasks.size(), tasks);
                         taskToUnmark.unmark();
-                        System.out.println(line);
-                        System.out.println("OK, I've marked this task as not done yet:");
-                        System.out.println(taskToUnmark);
-                        System.out.println(line);
+                        Ui.marked(taskToUnmark, false);
                         break;
 
                     // add todo
@@ -76,7 +59,7 @@ public class Aries {
                         String toDoDesc = parts[1];
                         Task t = new Todo(toDoDesc);
                         tasks.add(t);
-                        printAddTask(line, tasks);
+                        Ui.added(tasks);
                         break;
 
                     // add deadline task
@@ -94,7 +77,7 @@ public class Aries {
                         String ddlBy = ddlParts[1];
                         t = new Deadline(ddlDesc, ddlBy);
                         tasks.add(t);
-                        printAddTask(line, tasks);
+                        Ui.added(tasks);
                         break;
                     
                     // add event task
@@ -113,18 +96,14 @@ public class Aries {
                         String to = eventParts[2];
                         t = new Events(eventDesc, from, to);
                         tasks.add(t);
-                        printAddTask(line, tasks);
+                        Ui.added(tasks);
                         break;
 
                     // delete a task by index
                     case "delete":
                         Task taskToDelete = getTaskByIndex(parts, tasks.size(), tasks);
                         tasks.remove(taskToDelete);
-                        System.out.println(line);
-                        System.out.println("Noted. I've removed this task:");
-                        System.out.println(taskToDelete);
-                        System.out.println("Now you have " + tasks.size() + " tasks in the list.");
-                        System.out.println(line);
+                        Ui.deleted(taskToDelete, tasks);
                         break;
 
                     // add the input to the tasks list
@@ -137,15 +116,6 @@ public class Aries {
                 System.out.println("Unexpected error: " + e.getMessage());
             }
         }
-    }
-
-    // Helper method to print
-    private static void printAddTask(String line, List<Task> tasks) {
-        System.out.println(line);
-        System.out.println("Got it. I've added this task:");
-        System.out.println(tasks.get(tasks.size() - 1));
-        System.out.println("Now you have " + tasks.size() + " tasks in the list.");
-        System.out.println(line);
     }
 
     private static Task getTaskByIndex(String[] parts, int taskCount, List<Task> tasks) throws AriesException {
