@@ -1,4 +1,4 @@
-package aries;
+package aries.ui;
 
 import java.util.Scanner;
 

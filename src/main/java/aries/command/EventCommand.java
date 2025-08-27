@@ -1,10 +1,10 @@
 package aries.command;
 
 import aries.AriesException;
-import aries.Ui;
 import aries.task.Events;
 import aries.task.Task;
 import aries.task.TaskList;
+import aries.ui.Ui;
 
 public class EventCommand implements Command {
     private String description;

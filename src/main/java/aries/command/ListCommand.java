@@ -1,7 +1,7 @@
 package aries.command;
 
-import aries.Ui;
 import aries.task.TaskList;
+import aries.ui.Ui;
 
 public class ListCommand implements Command {
     @Override
