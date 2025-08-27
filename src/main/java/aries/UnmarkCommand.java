@@ -1,5 +1,7 @@
 package aries;
 
+import aries.util.IndexHandling;
+
 public class UnmarkCommand implements Command {
     private String index;
 

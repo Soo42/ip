@@ -1,5 +1,7 @@
 package aries;
 
+import aries.util.IndexHandling;
+
 public class DeleteCommand implements Command {
     private String index;
 

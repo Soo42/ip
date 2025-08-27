@@ -1,7 +1,9 @@
-package aries;
+package aries.util;
+
+import aries.AriesException;
 
 public class IndexHandling {
-    static int getValidIndex(String number, int taskCount) throws AriesException {
+    public static int getValidIndex(String number, int taskCount) throws AriesException {
         if (number == null || number.isEmpty()) {
             throw new AriesException("Please specify task number. e.g., mark 1, unmark 2, delete 3");
         }
