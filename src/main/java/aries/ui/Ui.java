@@ -1,4 +1,9 @@
+package aries.ui;
+
 import java.util.Scanner;
+
+import aries.task.Task;
+import aries.task.TaskList;
 
 public class Ui {
     private static final String line = "____________________________________";

@@ -1,3 +1,11 @@
+package aries.command;
+
+import aries.AriesException;
+import aries.task.Task;
+import aries.task.TaskList;
+import aries.ui.Ui;
+import aries.util.IndexHandling;
+
 public class MarkCommand implements Command {
     private String index;
 

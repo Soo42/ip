@@ -1,3 +1,11 @@
+package aries;
+
+import aries.command.Command;
+import aries.command.CommandParser;
+import aries.storage.Storage;
+import aries.task.TaskList;
+import aries.ui.Ui;
+
 public class Aries {
     public static void main(String[] args) {
         Ui Ui = new Ui();

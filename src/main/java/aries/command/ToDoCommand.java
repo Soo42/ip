@@ -1,3 +1,11 @@
+package aries.command;
+
+import aries.AriesException;
+import aries.task.Task;
+import aries.task.TaskList;
+import aries.task.Todo;
+import aries.ui.Ui;
+
 public class ToDoCommand implements Command {
     private String description;
 
