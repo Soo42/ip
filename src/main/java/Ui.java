@@ -1,5 +1,8 @@
+import java.util.Scanner;
+
 public class Ui {
     private static final String line = "____________________________________";
+    private final Scanner scanner = new Scanner(System.in);
 
     public void greet() {
         System.out.println(line);
@@ -12,6 +15,21 @@ public class Ui {
         System.out.println(line);
         System.out.println("Bye. Hope to see you again soon!");
         System.out.println(line);
+        close();
+    }
+
+    public String read() {
+        return scanner.nextLine();
+    }
+
+    public void showError(String message) {
+        System.out.println(line);
+        System.out.println(message);
+        System.out.println(line);
+    }
+
+    public void close() {
+        scanner.close();
     }
 
     public void showTaskList(TaskList tasks) {

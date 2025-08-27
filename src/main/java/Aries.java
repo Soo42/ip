@@ -1,5 +1,3 @@
-import java.util.Scanner;
-
 public class Aries {
     public static void main(String[] args) {
         Ui Ui = new Ui();
@@ -9,11 +7,8 @@ public class Aries {
         // Print welcome message
         Ui.greet();
 
-        // Scanner is inspired by ex3 in cs2030s
-        Scanner scanner = new Scanner(System.in);
-
         while (true) {
-            String input = scanner.nextLine();
+            String input = Ui.read();
 
             try {
                 Command command = CommandParser.parse(input);
@@ -25,11 +20,10 @@ public class Aries {
 
                 if (command.isExit()) {
                     Ui.exit();
-                    scanner.close();
                     return;
                 }
             } catch (AriesException e) {
-                System.out.println(e.getMessage());
+                Ui.showError(e.getMessage());
             } catch (Exception e) {
                 System.out.println("Unexpected error: " + e.getMessage());
             }
