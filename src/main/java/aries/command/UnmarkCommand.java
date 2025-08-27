@@ -1,5 +1,7 @@
-package aries;
+package aries.command;
 
+import aries.AriesException;
+import aries.Ui;
 import aries.task.Task;
 import aries.task.TaskList;
 import aries.util.IndexHandling;

@@ -1,5 +1,6 @@
-package aries;
+package aries.command;
 
+import aries.Ui;
 import aries.task.TaskList;
 
 public class ListCommand implements Command {

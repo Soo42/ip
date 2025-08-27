@@ -1,5 +1,7 @@
-package aries;
+package aries.command;
 
+import aries.AriesException;
+import aries.Ui;
 import aries.task.TaskList;
 
 public class UnknownCommand implements Command {

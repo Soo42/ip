@@ -1,4 +1,6 @@
-package aries;
+package aries.command;
+
+import aries.AriesException;
 
 public class CommandParser {
     public static Command parse(String input) throws AriesException {
