@@ -1,3 +1,5 @@
+package aries;
+
 public class IndexHandling {
     static int getValidIndex(String number, int taskCount) throws AriesException {
         if (number == null || number.isEmpty()) {

@@ -1,3 +1,5 @@
+package aries;
+
 public class EventCommand implements Command {
     private String description;
 

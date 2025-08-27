@@ -1,3 +1,5 @@
+package aries;
+
 import java.util.Scanner;
 
 public class Ui {

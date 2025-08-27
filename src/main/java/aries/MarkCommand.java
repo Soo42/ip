@@ -1,16 +1,18 @@
-public class UnmarkCommand implements Command {
+package aries;
+
+public class MarkCommand implements Command {
     private String index;
 
-    public UnmarkCommand(String index) {
+    public MarkCommand(String index) {
         this.index = index;
     }
 
     @Override
     public boolean execute(TaskList tasks, Ui ui) throws AriesException {
         int index = IndexHandling.getValidIndex(this.index, tasks.size());
-        Task taskToUnmark = tasks.get(index);
-        taskToUnmark.unmark();
-        ui.marked(taskToUnmark, false);
+        Task taskToMark = tasks.get(index);
+        taskToMark.markAsDone();
+        ui.marked(taskToMark, true);
         return true;
     }
 }

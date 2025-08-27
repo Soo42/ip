@@ -1,3 +1,5 @@
+package aries;
+
 public class UnknownCommand implements Command {
     @Override
     public boolean execute(TaskList tasks, Ui ui) throws AriesException {

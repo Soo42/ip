@@ -1,16 +1,18 @@
-public class DeleteCommand implements Command {
+package aries;
+
+public class UnmarkCommand implements Command {
     private String index;
 
-    public DeleteCommand(String index) {
+    public UnmarkCommand(String index) {
         this.index = index;
     }
 
     @Override
     public boolean execute(TaskList tasks, Ui ui) throws AriesException {
         int index = IndexHandling.getValidIndex(this.index, tasks.size());
-        Task taskToDelete = tasks.get(index);
-        tasks.remove(index);
-        ui.deleted(taskToDelete, tasks);
+        Task taskToUnmark = tasks.get(index);
+        taskToUnmark.unmark();
+        ui.marked(taskToUnmark, false);
         return true;
     }
 }

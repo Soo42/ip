@@ -1,3 +1,5 @@
+package aries;
+
 public class CommandParser {
     public static Command parse(String input) throws AriesException {
         String line = input.trim();
