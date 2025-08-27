@@ -1,4 +1,4 @@
-package aries;
+package aries.task;
 
 import java.io.Serializable;
 import java.util.ArrayList;

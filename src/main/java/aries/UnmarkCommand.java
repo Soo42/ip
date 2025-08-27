@@ -1,5 +1,7 @@
 package aries;
 
+import aries.task.Task;
+import aries.task.TaskList;
 import aries.util.IndexHandling;
 
 public class UnmarkCommand implements Command {

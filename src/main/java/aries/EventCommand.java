@@ -1,5 +1,9 @@
 package aries;
 
+import aries.task.Events;
+import aries.task.Task;
+import aries.task.TaskList;
+
 public class EventCommand implements Command {
     private String description;
 

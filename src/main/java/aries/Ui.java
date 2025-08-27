@@ -2,6 +2,9 @@ package aries;
 
 import java.util.Scanner;
 
+import aries.task.Task;
+import aries.task.TaskList;
+
 public class Ui {
     private static final String line = "____________________________________";
     private final Scanner scanner = new Scanner(System.in);

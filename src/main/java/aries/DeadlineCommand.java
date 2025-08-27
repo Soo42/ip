@@ -1,5 +1,9 @@
 package aries;
 
+import aries.task.Deadline;
+import aries.task.Task;
+import aries.task.TaskList;
+
 public class DeadlineCommand implements Command {
     private String description;
 

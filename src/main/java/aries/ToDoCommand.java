@@ -1,5 +1,9 @@
 package aries;
 
+import aries.task.Task;
+import aries.task.TaskList;
+import aries.task.Todo;
+
 public class ToDoCommand implements Command {
     private String description;
 

@@ -1,5 +1,7 @@
 package aries;
 
+import aries.task.TaskList;
+
 public class ByeCommand implements Command {
     @Override
     public boolean execute(TaskList tasks, Ui ui) {
