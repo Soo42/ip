@@ -1,5 +1,3 @@
-import java.util.List;
-
 public class Ui {
     private static final String line = "____________________________________";
 
@@ -16,7 +14,7 @@ public class Ui {
         System.out.println(line);
     }
 
-    public void showTaskList(List<Task> tasks) {
+    public void showTaskList(TaskList tasks) {
         System.out.println(line);
         System.out.println("Here are the tasks in your list:");
         for (int i = 0; i < tasks.size(); i++) {
@@ -25,7 +23,7 @@ public class Ui {
         System.out.println(line);
     }
 
-    public void added(List<Task> tasks) {
+    public void added(TaskList tasks) {
         System.out.println(line);
         System.out.println("Got it. I've added this task:");
         System.out.println(tasks.get(tasks.size() - 1));
@@ -33,7 +31,7 @@ public class Ui {
         System.out.println(line);
     }
 
-    public void deleted(Task task, List<Task> tasks) {
+    public void deleted(Task task, TaskList tasks) {
         System.out.println(line);
         System.out.println("Noted. I've removed this task:");
         System.out.println(task);

@@ -1,5 +1,3 @@
-import java.util.List;
-
 public class DeadlineCommand implements Command {
     private String description;
 
@@ -8,7 +6,7 @@ public class DeadlineCommand implements Command {
     }
 
     @Override
-    public boolean execute(List<Task> tasks, Ui ui) throws AriesException {
+    public boolean execute(TaskList tasks, Ui ui) throws AriesException {
         if (description == null || description.isEmpty()) {
             throw new AriesException("OOPS!!! The description of a deadline cannot be empty.");
         }

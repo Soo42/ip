@@ -1,4 +1,6 @@
 public class Events extends Task {
+    private static final long serialVersionUID = 1L;
+
     protected String from;
     protected String to;
 

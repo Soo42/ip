@@ -1,11 +1,10 @@
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 public class Aries {
     public static void main(String[] args) {
         Ui Ui = new Ui();
-        List<Task> tasks = new ArrayList<>();
+        Storage storage = new Storage("data/aries_tasks.ser");
+        TaskList tasks = storage.load();
 
         // Print welcome message
         Ui.greet();
@@ -19,6 +18,11 @@ public class Aries {
             try {
                 Command command = CommandParser.parse(input);
                 boolean hasChanged = command.execute(tasks, Ui);
+
+                if (hasChanged) {
+                    storage.save(tasks);
+                }
+
                 if (command.isExit()) {
                     Ui.exit();
                     scanner.close();

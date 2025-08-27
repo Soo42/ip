@@ -1,4 +1,6 @@
 public class Deadline extends Task {
+    private static final long serialVersionUID = 1L;
+
     protected String by;
 
     public Deadline(String description, String by) {

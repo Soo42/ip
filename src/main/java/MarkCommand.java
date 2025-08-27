@@ -1,5 +1,3 @@
-import java.util.List;
-
 public class MarkCommand implements Command {
     private String index;
 
@@ -8,7 +6,7 @@ public class MarkCommand implements Command {
     }
 
     @Override
-    public boolean execute(List<Task> tasks, Ui ui) throws AriesException {
+    public boolean execute(TaskList tasks, Ui ui) throws AriesException {
         int index = IndexHandling.getValidIndex(this.index, tasks.size());
         Task taskToMark = tasks.get(index);
         taskToMark.markAsDone();

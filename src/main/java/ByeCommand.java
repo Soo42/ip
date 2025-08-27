@@ -1,8 +1,6 @@
-import java.util.List;
-
 public class ByeCommand implements Command {
     @Override
-    public boolean execute(List<Task> tasks, Ui ui) {
+    public boolean execute(TaskList tasks, Ui ui) {
         return false;
     }
 
