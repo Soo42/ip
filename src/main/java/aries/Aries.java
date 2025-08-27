@@ -1,5 +1,7 @@
 package aries;
 
+import aries.storage.Storage;
+
 public class Aries {
     public static void main(String[] args) {
         Ui Ui = new Ui();
