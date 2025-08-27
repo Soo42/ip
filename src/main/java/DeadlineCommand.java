@@ -1,0 +1,28 @@
+import java.util.List;
+
+public class DeadlineCommand implements Command {
+    private String description;
+
+    public DeadlineCommand(String description) {
+        this.description = description;
+    }
+
+    @Override
+    public boolean execute(List<Task> tasks, Ui ui) throws AriesException {
+        if (description == null || description.isEmpty()) {
+            throw new AriesException("OOPS!!! The description of a deadline cannot be empty.");
+        }
+
+        String[] parts = description.split(" /by ");
+        if (parts.length != 2 || parts[0].isEmpty()) {
+            throw new AriesException("OOPS!!! The description of a deadline must be in the format: description /by date_time");
+        }
+
+        String desc = parts[0].trim();
+        String by = parts[1].trim();
+        Task t = new Deadline(desc, by);
+        tasks.add(t);
+        ui.added(tasks);
+        return true;
+    }
+}
