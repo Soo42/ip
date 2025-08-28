@@ -2,7 +2,17 @@ package aries.command;
 
 import aries.AriesException;
 
+/**
+ * Parses user input into commands.
+ */
 public class CommandParser {
+    /**
+     * Parses the input string and returns the corresponding Command object.
+     *
+     * @param input The user input string.
+     * @return The corresponding Command object.
+     * @throws AriesException If the input is empty or invalid.
+     */
     public static Command parse(String input) throws AriesException {
         String line = input.trim();
         if (line.isEmpty()) {
