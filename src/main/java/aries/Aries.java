@@ -6,7 +6,17 @@ import aries.storage.Storage;
 import aries.task.TaskList;
 import aries.ui.Ui;
 
+/**
+ * The main class for the Aries application.
+ * It initializes the UI, storage, and task list, and handles the main command loop.
+ */
 public class Aries {
+    /**
+     * The entry point of the Aries application.
+     * It initializes the UI, storage, and task list, and enters the main command loop.
+     *
+     * @param args Command-line arguments (not used).
+     */
     public static void main(String[] args) {
         Ui Ui = new Ui();
         Storage storage = new Storage("data/aries_tasks.ser");
