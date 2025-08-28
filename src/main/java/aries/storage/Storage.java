@@ -11,13 +11,27 @@ import java.io.ObjectOutputStream
 
 import aries.task.TaskList;
 
+/**
+ * Manages the loading and saving of tasks to a file, using serialization.
+ */
 public class Storage {
     private File file;
 
+    /**
+     * Constructs a Storage object with the specified file path.
+     *
+     * @param filePath the path to the file where tasks will be stored
+     */
     public Storage(String filePath) {
         this.file = new File(filePath);
     }
 
+    /**
+     * Loads tasks from the file. If the file does not exist or an error occurs,
+     * returns an empty TaskList.
+     *
+     * @return the loaded TaskList
+     */
     public TaskList load() {
         if (!file.exists()) {
             return new TaskList();
@@ -31,6 +45,11 @@ public class Storage {
         }
     }
 
+    /**
+     * Saves the given TaskList to the file.
+     *
+     * @param tasks the TaskList to save
+     */
     public void save(TaskList tasks) {
         File parent = file.getParentFile();
 
