@@ -40,6 +40,8 @@ public class CommandParser {
             return new EventCommand(description);
         case "delete":
             return new DeleteCommand(description);
+        case "find":
+            return new FindCommand(description);
         default:
             return new UnknownCommand();
         }
