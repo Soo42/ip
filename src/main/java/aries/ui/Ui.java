@@ -113,4 +113,17 @@ public class Ui {
         System.out.println(task);
         System.out.println(line);
     }
+
+    public void showFoundTasks(TaskList foundTasks) {
+        System.out.println(line);
+        if (foundTasks.isEmpty()) {
+            System.out.println("No matching tasks found.");
+        } else {
+            System.out.println("Here are the matching tasks in your list:");
+            for (int i = 0; i < foundTasks.size(); i++) {
+                System.out.println((i + 1) + ". " + foundTasks.get(i));
+            }
+        }
+        System.out.println(line);
+    }
 }
