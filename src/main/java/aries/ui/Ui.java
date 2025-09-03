@@ -109,11 +109,17 @@ public class Ui {
      */
     public void marked(Task task, boolean isDone) {
         System.out.println(line);
-        System.out.println(isDone ? "Nice! I've marked this task as done:" : "OK, I've marked this task as not done yet:");
+        System.out.println(isDone ? "Nice! I've marked this task as done:"
+                : "OK, I've marked this task as not done yet:");
         System.out.println(task);
         System.out.println(line);
     }
 
+    /**
+     * Displays the tasks found based on a search query.
+     *
+     * @param foundTasks The TaskList containing the found tasks.
+     */
     public void showFoundTasks(TaskList foundTasks) {
         System.out.println(line);
         if (foundTasks.isEmpty()) {
