@@ -23,11 +23,6 @@ public class Deadline extends Task {
         this.by = DateTime.parse(by);
     }
 
-    /**
-     * Returns the string representation of the deadline task.
-     *
-     * @return The string representation of the deadline task.
-     */
     @Override
     public String toString() {
         return "[D] " + super.toString() + " (by: " + DateTime.format(by) + ")";

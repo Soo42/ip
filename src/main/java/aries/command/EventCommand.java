@@ -21,13 +21,6 @@ public class EventCommand implements Command {
         this.description = description;
     }
 
-    /** Executes the event command by adding a new event task to the task list.
-     *
-     * @param tasks The task list to which the new event will be added.
-     * @param ui    The user interface to display messages.
-     * @return true, as the task list is modified.
-     * @throws AriesException If the description format is invalid.
-     */
     @Override
     public boolean execute(TaskList tasks, Ui ui) throws AriesException {
         if (description == null || description.isEmpty()) {

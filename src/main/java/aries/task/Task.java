@@ -53,11 +53,6 @@ public abstract class Task implements Serializable {
         return this.description;
     }
 
-    /**
-     * Returns the description of the task.
-     *
-     * @return The task description.
-     */
     @Override
     public String toString() {
         return "[" + getStatusIcon() + "] " + this.description;

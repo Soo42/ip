@@ -65,12 +65,6 @@ public class TaskList implements Serializable {
         return tasks.isEmpty();
     }
 
-    /**
-     * Returns a string representation of the task list.
-     * Each task is prefixed with its index (1-based).
-     *
-     * @return A string representation of the task list.
-     */
     @Override
     public String toString() {
         if (tasks.isEmpty()) {
