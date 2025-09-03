@@ -5,7 +5,8 @@ import aries.task.TaskList;
 import aries.ui.Ui;
 
 /**
- * Represents a command that can be executed by the Aries application, inheriting classes must implement the execute method.
+ * Represents a command that can be executed by the Aries application,
+ * inheriting classes must implement the execute method.
  */
 public interface Command {
     /**
@@ -17,7 +18,7 @@ public interface Command {
      * @throws AriesException If an error occurs during command execution.
      */
     boolean execute(TaskList tasks, Ui ui) throws AriesException;
-    
+
     /**
      * Indicates whether this command is an exit command.
      *
@@ -26,4 +27,4 @@ public interface Command {
     default boolean isExit() {
         return false;
     }
-} 
+}

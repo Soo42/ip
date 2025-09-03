@@ -35,18 +35,20 @@ public class EventCommand implements Command {
         }
 
         int fromIdx = description.indexOf(" /from ");
-        int toIdx   = description.indexOf(" /to ");
+        int toIdx = description.indexOf(" /to ");
 
         if (fromIdx < 0 || toIdx < 0 || toIdx <= fromIdx) {
-            throw new AriesException("OOPS!!! The event format should be: event <description> /from <start time> /to <end time>");
+            throw new AriesException("OOPS!!! The event format should be: event <description>"
+                    + " /from <start time> /to <end time>");
         }
 
         String desc = description.substring(0, fromIdx).trim();
         String from = description.substring(fromIdx + " /from ".length(), toIdx).trim();
-        String to   = description.substring(toIdx + " /to ".length()).trim();
+        String to = description.substring(toIdx + " /to ".length()).trim();
 
         if (desc.isEmpty() || from.isEmpty() || to.isEmpty()) {
-            throw new AriesException("OOPS!!! The event format should be: event <description> /from <start time> /to <end time>");
+            throw new AriesException("OOPS!!! The event format should be: event <description>"
+                    + " /from <start time> /to <end time>");
         }
 
         Task t = new Events(desc, from, to);

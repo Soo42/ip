@@ -19,5 +19,5 @@ public class ListCommand implements Command {
         ui.showTaskList(tasks);
         return false;
     }
-    
+
 }

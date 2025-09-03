@@ -21,7 +21,8 @@ public class DeleteCommand implements Command {
         this.index = index;
     }
 
-    /** Executes the delete command by removing the specified task from the task list.
+    /**
+     * Executes the delete command by removing the specified task from the task list.
      *
      * @param tasks The task list from which the task will be deleted.
      * @param ui    The user interface to display messages.
