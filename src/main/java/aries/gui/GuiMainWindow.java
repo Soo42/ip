@@ -46,10 +46,10 @@ public class GuiMainWindow extends AnchorPane {
     @FXML
     private void handleUserInput() {
         String input = userInput.getText();
-        // String response = aries.getResponse(input);
+        String response = aries.getResponse(input);
         dialogContainer.getChildren().addAll(
                 DialogBox.getUserDialog(input, userImage),
-                DialogBox.getAriesDialog(input, ariesImage));
+                DialogBox.getAriesDialog(response, ariesImage));
         userInput.clear();
     }
 }
