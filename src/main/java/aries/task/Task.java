@@ -5,7 +5,7 @@ import java.io.Serializable;
 /**
  * Represents a task with a description and completion status.
  */
-public abstract class Task implements Serializable{
+public abstract class Task implements Serializable {
     private static final long serialVersionUID = 1L;
 
     protected String description;
