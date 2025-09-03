@@ -29,7 +29,7 @@ public class ToDoCommand implements Command {
 
         Task t = new Todo(description);
         tasks.add(t);
-        ui.added(tasks);
+        ui.showAddedString(tasks);
         return true;
     }
 }

@@ -26,7 +26,7 @@ public class MarkCommand implements Command {
         int index = IndexHandling.getValidIndex(this.index, tasks.size());
         Task taskToMark = tasks.get(index);
         taskToMark.markAsDone();
-        ui.marked(taskToMark, true);
+        ui.showMarkedStatus(taskToMark, true);
         return true;
     }
 }

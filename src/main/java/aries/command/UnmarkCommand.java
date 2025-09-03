@@ -26,7 +26,7 @@ public class UnmarkCommand implements Command {
         int index = IndexHandling.getValidIndex(this.index, tasks.size());
         Task taskToUnmark = tasks.get(index);
         taskToUnmark.unmark();
-        ui.marked(taskToUnmark, false);
+        ui.showMarkedStatus(taskToUnmark, false);
         return true;
     }
 }

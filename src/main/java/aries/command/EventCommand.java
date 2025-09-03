@@ -46,7 +46,7 @@ public class EventCommand implements Command {
 
         Task t = new Events(desc, from, to);
         tasks.add(t);
-        ui.added(tasks);
+        ui.showAddedString(tasks);
         return true;
     }
 }

@@ -26,7 +26,7 @@ public class DeleteCommand implements Command {
         int index = IndexHandling.getValidIndex(this.index, tasks.size());
         Task taskToDelete = tasks.get(index);
         tasks.remove(index);
-        ui.deleted(taskToDelete, tasks);
+        ui.showDeletedString(taskToDelete, tasks);
         return true;
     }
 }

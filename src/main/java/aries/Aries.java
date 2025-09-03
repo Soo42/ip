@@ -26,7 +26,7 @@ public class Aries {
         ui.greet();
 
         while (true) {
-            String input = ui.read();
+            String input = ui.readInputString();
 
             try {
                 Command command = CommandParser.parse(input);
