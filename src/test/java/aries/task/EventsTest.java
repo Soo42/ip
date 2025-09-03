@@ -1,9 +1,11 @@
 package aries.task;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import org.junit.jupiter.api.Test;
 
 import java.time.LocalDateTime;
+
+import org.junit.jupiter.api.Test;
+
 import aries.util.DateTime;
 
 public class EventsTest {
@@ -39,5 +41,5 @@ public class EventsTest {
         assertEquals("[E] [X] Team Building (from: NOV 5 2023, 1:00PM to: NOV 5 2023, 5:00PM)", event.toString());
         event.unmark();
         assertEquals("[E] [ ] Team Building (from: NOV 5 2023, 1:00PM to: NOV 5 2023, 5:00PM)", event.toString());
-    }   
+    }
 }

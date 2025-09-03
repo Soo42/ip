@@ -21,13 +21,6 @@ public class ToDoCommand implements Command {
         this.description = description;
     }
 
-    /**
-     * Executes the ToDo command.
-     * @param tasks The list of tasks.
-     * @param ui The user interface.
-     * @return true, as the task list is modified.
-     * @throws AriesException If the description is empty.
-     */
     @Override
     public boolean execute(TaskList tasks, Ui ui) throws AriesException {
         if (description == null || description.isEmpty()) {

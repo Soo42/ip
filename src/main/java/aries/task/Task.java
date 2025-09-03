@@ -5,7 +5,7 @@ import java.io.Serializable;
 /**
  * Represents a task with a description and completion status.
  */
-public abstract class Task implements Serializable{
+public abstract class Task implements Serializable {
     private static final long serialVersionUID = 1L;
 
     protected String description;
@@ -53,11 +53,6 @@ public abstract class Task implements Serializable{
         return this.description;
     }
 
-    /**
-     * Returns the description of the task.
-     *
-     * @return The task description.
-     */
     @Override
     public String toString() {
         return "[" + getStatusIcon() + "] " + this.description;

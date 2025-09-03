@@ -21,13 +21,6 @@ public class DeleteCommand implements Command {
         this.index = index;
     }
 
-    /** Executes the delete command by removing the specified task from the task list.
-     *
-     * @param tasks The task list from which the task will be deleted.
-     * @param ui    The user interface to display messages.
-     * @return true, as the task list is modified.
-     * @throws AriesException If the index is invalid or out of bounds.
-     */
     @Override
     public boolean execute(TaskList tasks, Ui ui) throws AriesException {
         int index = IndexHandling.getValidIndex(this.index, tasks.size());

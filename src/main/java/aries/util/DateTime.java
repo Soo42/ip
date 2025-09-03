@@ -9,14 +9,14 @@ import java.time.format.DateTimeParseException;
  * Utility class for parsing and formatting date and time strings.
  */
 public class DateTime {
-    private DateTime() {}
+    private static final String[] DATE_TIME_PATTERN = new String[] {
+        "yyyy-MM-dd HHmm", "yyyy-MM-dd", "dd-MM-yyyy HHmm", "dd-MM-yyyy",
+        "dd/MM/yyyy HHmm", "dd/MM/yyyy", "yyyy/MM/dd HHmm", "yyyy/MM/dd",
+        "yyyy.MM.dd HHmm", "yyyy.MM.dd", "dd.MM.yyyy HHmm", "dd.MM.yyyy",
+        "dd MMM yyyy HHmm", "dd MMM yyyy", "yyyy MMM dd HHmm", "yyyy MMM dd"
+    };
 
-    private static final String[] DATE_TIME_PATTERN = new String[]{
-            "yyyy-MM-dd HHmm", "yyyy-MM-dd", "dd-MM-yyyy HHmm", "dd-MM-yyyy",
-            "dd/MM/yyyy HHmm", "dd/MM/yyyy", "yyyy/MM/dd HHmm", "yyyy/MM/dd", 
-            "yyyy.MM.dd HHmm", "yyyy.MM.dd", "dd.MM.yyyy HHmm", "dd.MM.yyyy", 
-            "dd MMM yyyy HHmm", "dd MMM yyyy", "yyyy MMM dd HHmm", "yyyy MMM dd"
-            };
+    private DateTime() {}
 
     /**
      * Parses a date/time string into a LocalDateTime object.
@@ -37,9 +37,11 @@ public class DateTime {
                     LocalDate date = LocalDate.parse(dateTimeStr, formatter);
                     return date.atStartOfDay();
                 }
-            } catch (DateTimeParseException e) {}
+            } catch (DateTimeParseException e) {
+                continue;
+            }
         }
-        
+
         throw new DateTimeParseException("Invalid date/time format: " + dateTimeStr, dateTimeStr, 0);
     }
 

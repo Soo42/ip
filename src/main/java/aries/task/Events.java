@@ -26,13 +26,8 @@ public class Events extends Task {
         this.to = DateTime.parse(to);
     }
 
-    /**
-     * Returns a string representation of the event task, including its type, description, start time, and end time.
-     *
-     * @return A string representation of the event task.
-     */
     @Override
     public String toString() {
         return "[E] " + super.toString() + " (from: " + DateTime.format(from) + " to: " + DateTime.format(to) + ")";
-    }    
+    }
 }

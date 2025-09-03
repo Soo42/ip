@@ -13,21 +13,14 @@ public class DeadlineCommand implements Command {
     private String description;
 
     /**
-     * Constructs a DeadlineCommand with the given description.
+     * Constructs a DeadlineCommand with the specified deadline.
      *
-     * @param description The description of the deadline task, including the date/time.
+     * @param description The full description of the deadline task, including /by.
      */
     public DeadlineCommand(String description) {
         this.description = description;
     }
 
-    /** Executes the command to add a deadline task to the task list.
-     *
-     * @param tasks The task list to which the deadline task will be added.
-     * @param ui    The user interface for displaying messages.
-     * @return true, as the task list is modified.
-     * @throws AriesException If there is an error in adding the task.
-     */
     @Override
     public boolean execute(TaskList tasks, Ui ui) throws AriesException {
         if (description == null || description.isEmpty()) {
@@ -36,7 +29,8 @@ public class DeadlineCommand implements Command {
 
         String[] parts = description.split(" /by ");
         if (parts.length != 2 || parts[0].isEmpty()) {
-            throw new AriesException("OOPS!!! The description of a deadline must be in the format: description /by date_time");
+            throw new AriesException("OOPS!!! The description of a deadline must be in the format: "
+                    + "description /by date_time");
         }
 
         String desc = parts[0].trim();

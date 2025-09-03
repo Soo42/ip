@@ -5,6 +5,9 @@ import aries.task.Task;
 import aries.task.TaskList;
 import aries.ui.Ui;
 
+/**
+ * Represents a command to find tasks containing a specific keyword.
+ */
 public class FindCommand implements Command {
     private String keyword;
 
