@@ -18,30 +18,30 @@ public class Aries {
      * @param args Command-line arguments (not used).
      */
     public static void main(String[] args) {
-        Ui Ui = new Ui();
+        Ui ui = new Ui();
         Storage storage = new Storage("data/aries_tasks.ser");
         TaskList tasks = storage.load();
 
         // Print welcome message
-        Ui.greet();
+        ui.greet();
 
         while (true) {
-            String input = Ui.read();
+            String input = ui.read();
 
             try {
                 Command command = CommandParser.parse(input);
-                boolean hasChanged = command.execute(tasks, Ui);
+                boolean hasChanged = command.execute(tasks, ui);
 
                 if (hasChanged) {
                     storage.save(tasks);
                 }
 
                 if (command.isExit()) {
-                    Ui.exit();
+                    ui.exit();
                     return;
                 }
             } catch (AriesException e) {
-                Ui.showError(e.getMessage());
+                ui.showError(e.getMessage());
             } catch (Exception e) {
                 System.out.println("Unexpected error: " + e.getMessage());
             }
