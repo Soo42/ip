@@ -2,6 +2,7 @@ package aries;
 
 import aries.command.Command;
 import aries.command.CommandParser;
+import aries.command.CommandResult;
 import aries.storage.Storage;
 import aries.task.TaskList;
 import aries.ui.Ui;
@@ -30,13 +31,15 @@ public class Aries {
 
             try {
                 Command command = CommandParser.parse(input);
-                boolean hasChanged = command.execute(tasks, ui);
+                CommandResult result = command.execute(tasks, ui);
+                boolean hasChanged = result.isChanged();
+                boolean isExit = result.isExit();
 
                 if (hasChanged) {
                     storage.save(tasks);
                 }
 
-                if (command.isExit()) {
+                if (isExit) {
                     ui.exit();
                     return;
                 }

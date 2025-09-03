@@ -8,9 +8,9 @@ import aries.ui.Ui;
  */
 public class ListCommand implements Command {
     @Override
-    public boolean execute(TaskList tasks, Ui ui) {
+    public CommandResult execute(TaskList tasks, Ui ui) {
         ui.showTaskList(tasks);
-        return false;
+        return new CommandResult("", false, false);
     }
 
 }
