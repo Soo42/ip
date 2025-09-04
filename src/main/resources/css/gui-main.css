@@ -3,7 +3,9 @@
     /* Set the background color for root. */
     -fx-background-color: main-color;
     background-color: main-color;
-    background-color: main-color;
+    -fx-background-image: url("../images/background.png");
+    -fx-background-size: 400px 600px;
+    -fx-background-repeat: round;
 }
 
 .text-field {
