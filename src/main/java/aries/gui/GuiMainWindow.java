@@ -47,9 +47,10 @@ public class GuiMainWindow extends AnchorPane {
     private void handleUserInput() {
         String input = userInput.getText();
         String response = aries.getResponse(input);
+        String commandType = aries.getCommandType();
         dialogContainer.getChildren().addAll(
                 DialogBox.getUserDialog(input, userImage),
-                DialogBox.getAriesDialog(response, ariesImage));
+                DialogBox.getAriesDialog(response, ariesImage, commandType));
         userInput.clear();
     }
 }

@@ -52,13 +52,28 @@ public class DialogBox extends HBox {
         dialog.getStyleClass().add("reply-label");
     }
 
+    private void setCommandType(String commandType) {
+        if (commandType == null) {
+            dialog.getStyleClass().add("default-label");
+            return;
+        }
+
+        switch (commandType) {
+            case "DeadlineCommand", "TodoCommand", "EventCommand" -> dialog.getStyleClass().add("add-label");
+            case "DeleteCommand" -> dialog.getStyleClass().add("delete-label");
+            case "MarkCommand", "UnmarkCommand" -> dialog.getStyleClass().add("marked-label");
+            default -> dialog.getStyleClass().add("default-label");
+        }
+    }
+
     public static DialogBox getUserDialog(String text, Image img) {
         return new DialogBox(text, img);
     }
 
-    public static DialogBox getAriesDialog(String text, Image img) {
+    public static DialogBox getAriesDialog(String text, Image img, String commandType) {
         var db = new DialogBox(text, img);
         db.flip();
+        db.setCommandType(commandType);
         return db;
     }
 }

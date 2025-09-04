@@ -16,6 +16,7 @@ public class Aries {
     private final Storage storage;
     private final TaskList tasks;
     private final Ui ui;
+    private String commandType;
 
     /**
      * Constructor for the Aries application.
@@ -34,6 +35,7 @@ public class Aries {
             CommandResult result = command.execute(tasks, ui);
             boolean hasChanged = result.isChanged();
             boolean isExit = result.isExit();
+            commandType = command.getClass().getSimpleName();
 
             if (hasChanged) {
                 storage.save(tasks);
@@ -48,5 +50,9 @@ public class Aries {
         } catch (Exception e) {
             return "Unexpected error: " + e.getMessage();
         }
+    }
+
+    public String getCommandType() {
+        return commandType;
     }
 }
