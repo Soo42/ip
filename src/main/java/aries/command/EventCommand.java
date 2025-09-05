@@ -22,7 +22,7 @@ public class EventCommand implements Command {
     }
 
     @Override
-    public boolean execute(TaskList tasks, Ui ui) throws AriesException {
+    public CommandResult execute(TaskList tasks, Ui ui) throws AriesException {
         if (description == null || description.isEmpty()) {
             throw new AriesException("OOPS!!! The description of an event cannot be empty.");
         }
@@ -46,7 +46,6 @@ public class EventCommand implements Command {
 
         Task t = new Events(desc, from, to);
         tasks.add(t);
-        ui.added(tasks);
-        return true;
+        return new CommandResult(ui.showAddedString(tasks), true, false);
     }
 }

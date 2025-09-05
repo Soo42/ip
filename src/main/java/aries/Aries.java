@@ -2,6 +2,7 @@ package aries;
 
 import aries.command.Command;
 import aries.command.CommandParser;
+import aries.command.CommandResult;
 import aries.storage.Storage;
 import aries.task.TaskList;
 import aries.ui.Ui;
@@ -11,40 +12,47 @@ import aries.ui.Ui;
  * It initializes the UI, storage, and task list, and handles the main command loop.
  */
 public class Aries {
+    private static final String DEFAULT_FILE_PATH = "data/aries_tasks.ser";
+    private final Storage storage;
+    private final TaskList tasks;
+    private final Ui ui;
+    private String commandType;
+
     /**
-     * The entry point of the Aries application.
-     * It initializes the UI, storage, and task list, and enters the main command loop.
+     * Constructor for the Aries application.
      *
-     * @param args Command-line arguments (not used).
+     * @param filePath The file path for the storage.
      */
-    public static void main(String[] args) {
-        Ui ui = new Ui();
-        Storage storage = new Storage("data/aries_tasks.ser");
-        TaskList tasks = storage.load();
+    public Aries() {
+        this.ui = new Ui();
+        this.storage = new Storage(DEFAULT_FILE_PATH);
+        this.tasks = storage.load();
+    }
 
-        // Print welcome message
-        ui.greet();
+    public String getResponse(String input) {
+        try {
+            Command command = CommandParser.parse(input);
+            CommandResult result = command.execute(tasks, ui);
+            boolean hasChanged = result.isChanged();
+            boolean isExit = result.isExit();
+            commandType = command.getClass().getSimpleName();
 
-        while (true) {
-            String input = ui.read();
-
-            try {
-                Command command = CommandParser.parse(input);
-                boolean hasChanged = command.execute(tasks, ui);
-
-                if (hasChanged) {
-                    storage.save(tasks);
-                }
-
-                if (command.isExit()) {
-                    ui.exit();
-                    return;
-                }
-            } catch (AriesException e) {
-                ui.showError(e.getMessage());
-            } catch (Exception e) {
-                System.out.println("Unexpected error: " + e.getMessage());
+            if (hasChanged) {
+                storage.save(tasks);
             }
+
+            if (isExit) {
+                return "Goodbye! Hope to see you again soon!";
+            }
+            return result.getResponse();
+        } catch (AriesException e) {
+            return e.getMessage();
+        } catch (Exception e) {
+            return "Unexpected error: " + e.getMessage();
         }
+    }
+
+    public String getCommandType() {
+        return commandType;
     }
 }

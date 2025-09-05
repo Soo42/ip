@@ -16,21 +16,16 @@ public class Ui {
     /**
      * Greets the user with a welcome message.
      */
-    public void greet() {
-        System.out.println(line);
-        System.out.println("Hello! I'm Aries.");
-        System.out.println("What can I do for you?");
-        System.out.println(line);
+    public String greet() {
+        return ("Hello! I'm Aries.\n" + "What can I do for you?");
     }
 
     /**
      * Bids farewell to the user and closes the scanner.
      */
-    public void exit() {
-        System.out.println(line);
-        System.out.println("Bye. Hope to see you again soon!");
-        System.out.println(line);
+    public String exit() {
         close();
+        return ("Bye. Hope to see you again soon!");
     }
 
     /**
@@ -38,7 +33,7 @@ public class Ui {
      *
      * @return The line of input entered by the user.
      */
-    public String read() {
+    public String readInputString() {
         return scanner.nextLine();
     }
 
@@ -47,10 +42,8 @@ public class Ui {
      *
      * @param message The error message to be displayed.
      */
-    public void showError(String message) {
-        System.out.println(line);
-        System.out.println(message);
-        System.out.println(line);
+    public String showError(String message) {
+        return message;
     }
 
     /**
@@ -65,13 +58,15 @@ public class Ui {
      *
      * @param tasks The TaskList containing the tasks to be displayed.
      */
-    public void showTaskList(TaskList tasks) {
-        System.out.println(line);
-        System.out.println("Here are the tasks in your list:");
+    public String showTaskList(TaskList tasks) {
+        StringBuilder sb = new StringBuilder();
+        sb.append(line).append("\n");
+        sb.append("Here are the tasks in your list:\n");
         for (int i = 0; i < tasks.size(); i++) {
-            System.out.println((i + 1) + ". " + tasks.get(i));
+            sb.append((i + 1) + ". " + tasks.get(i) + "\n");
         }
-        System.out.println(line);
+        sb.append(line);
+        return sb.toString();
     }
 
     /**
@@ -79,12 +74,12 @@ public class Ui {
      *
      * @param tasks The TaskList after addition.
      */
-    public void added(TaskList tasks) {
-        System.out.println(line);
-        System.out.println("Got it. I've added this task:");
-        System.out.println(tasks.get(tasks.size() - 1));
-        System.out.println("Now you have " + tasks.size() + " tasks in the list.");
-        System.out.println(line);
+    public String showAddedString(TaskList tasks) {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Got it. I've added this task:\n");
+        sb.append(tasks.get(tasks.size() - 1)).append("\n");
+        sb.append("Now you have ").append(tasks.size()).append(" tasks in the list.\n");
+        return sb.toString();
     }
 
     /**
@@ -93,12 +88,12 @@ public class Ui {
      * @param task  The Task that was deleted.
      * @param tasks The TaskList after deletion.
      */
-    public void deleted(Task task, TaskList tasks) {
-        System.out.println(line);
-        System.out.println("Noted. I've removed this task:");
-        System.out.println(task);
-        System.out.println("Now you have " + tasks.size() + " tasks in the list.");
-        System.out.println(line);
+    public String showDeletedString(Task task, TaskList tasks) {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Noted. I've removed this task:\n");
+        sb.append(task).append("\n");
+        sb.append("Now you have ").append(tasks.size()).append(" tasks in the list.\n");
+        return sb.toString();
     }
 
     /**
@@ -107,12 +102,12 @@ public class Ui {
      * @param task   The Task to be marked.
      * @param isDone A boolean indicating whether the task is marked as done (true) or not done (false).
      */
-    public void marked(Task task, boolean isDone) {
-        System.out.println(line);
-        System.out.println(isDone ? "Nice! I've marked this task as done:"
-                : "OK, I've marked this task as not done yet:");
-        System.out.println(task);
-        System.out.println(line);
+    public String showMarkedStatus(Task task, boolean isDone) {
+        StringBuilder sb = new StringBuilder();
+        sb.append(isDone ? "Nice! I've marked this task as done:"
+                : "OK, I've marked this task as not done yet:").append("\n");
+        sb.append(task).append("\n");
+        return sb.toString();
     }
 
     /**
@@ -120,16 +115,18 @@ public class Ui {
      *
      * @param foundTasks The TaskList containing the found tasks.
      */
-    public void showFoundTasks(TaskList foundTasks) {
-        System.out.println(line);
+    public String showFoundTasks(TaskList foundTasks) {
+        StringBuilder sb = new StringBuilder();
+        sb.append(line).append("\n");
         if (foundTasks.isEmpty()) {
-            System.out.println("No matching tasks found.");
+            sb.append("No matching tasks found.");
         } else {
-            System.out.println("Here are the matching tasks in your list:");
+            sb.append("Here are the matching tasks in your list:");
             for (int i = 0; i < foundTasks.size(); i++) {
-                System.out.println((i + 1) + ". " + foundTasks.get(i));
+                sb.append((i + 1) + ". " + foundTasks.get(i) + "\n");
             }
         }
-        System.out.println(line);
+        sb.append(line);
+        return sb.toString();
     }
 }

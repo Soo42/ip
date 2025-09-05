@@ -22,14 +22,13 @@ public class ToDoCommand implements Command {
     }
 
     @Override
-    public boolean execute(TaskList tasks, Ui ui) throws AriesException {
+    public CommandResult execute(TaskList tasks, Ui ui) throws AriesException {
         if (description == null || description.isEmpty()) {
             throw new AriesException("OOPS!!! The description of a todo cannot be empty.");
         }
 
         Task t = new Todo(description);
         tasks.add(t);
-        ui.added(tasks);
-        return true;
+        return new CommandResult(ui.showAddedString(tasks), true, false);
     }
 }

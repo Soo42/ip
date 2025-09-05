@@ -22,7 +22,7 @@ public class DeadlineCommand implements Command {
     }
 
     @Override
-    public boolean execute(TaskList tasks, Ui ui) throws AriesException {
+    public CommandResult execute(TaskList tasks, Ui ui) throws AriesException {
         if (description == null || description.isEmpty()) {
             throw new AriesException("OOPS!!! The description of a deadline cannot be empty.");
         }
@@ -37,7 +37,6 @@ public class DeadlineCommand implements Command {
         String by = parts[1].trim();
         Task t = new Deadline(desc, by);
         tasks.add(t);
-        ui.added(tasks);
-        return true;
+        return new CommandResult(ui.showAddedString(tasks), true, false);
     }
 }

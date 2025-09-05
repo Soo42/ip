@@ -16,7 +16,7 @@ public class FindCommand implements Command {
     }
 
     @Override
-    public boolean execute(TaskList tasks, Ui ui) throws AriesException {
+    public CommandResult execute(TaskList tasks, Ui ui) throws AriesException {
         if (keyword.isEmpty()) {
             throw new AriesException("OOPS!!! The keyword for find cannot be empty.");
         }
@@ -29,7 +29,6 @@ public class FindCommand implements Command {
             }
         }
 
-        ui.showFoundTasks(foundTasks);
-        return false;
+        return new CommandResult(ui.showFoundTasks(foundTasks), false, false);
     }
 }
