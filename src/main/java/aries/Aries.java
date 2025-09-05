@@ -55,4 +55,8 @@ public class Aries {
     public String getCommandType() {
         return commandType;
     }
+
+    public String getWelcomeMessage() {
+        return "Hello! I'm Aries!\nWhat can I do for you?";
+    }
 }

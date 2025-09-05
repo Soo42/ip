@@ -36,6 +36,8 @@ public class GuiMainWindow extends AnchorPane {
     /** Injects the Aries instance */
     public void setAries(Aries aries) {
         this.aries = aries;
+        dialogContainer.getChildren().add(
+                DialogBox.getAriesDialog(aries.getWelcomeMessage(), ariesImage, ""));
     }
 
     /**
