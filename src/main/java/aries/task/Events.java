@@ -22,6 +22,11 @@ public class Events extends Task {
      */
     public Events(String description, String from, String to) {
         super(description);
+        assert from != null : "Start time cannot be null";
+        assert !from.isEmpty() : "Start time cannot be empty";
+        assert to != null : "End time cannot be null";
+        assert !to.isEmpty() : "End time cannot be empty";
+        assert DateTime.parse(from).isBefore(DateTime.parse(to)) : "Start time must be before end time";
         this.from = DateTime.parse(from);
         this.to = DateTime.parse(to);
     }
