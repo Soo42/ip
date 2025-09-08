@@ -23,17 +23,19 @@ public class IndexHandling {
             throw new AriesException("No tasks available.");
         }
 
-        int index;
+        int oneBasedIndex;
+
         try {
-            index = Integer.parseInt(number);
+            oneBasedIndex = Integer.parseInt(number);
         } catch (NumberFormatException e) {
             throw new AriesException("Please enter a valid task number.");
         }
 
-        if (index < 1 || index > taskCount) {
+        if (oneBasedIndex < 1 || oneBasedIndex > taskCount) {
             throw new AriesException("Task number out of range.");
         }
 
-        return index - 1;
+        int zeroBasedIndex = oneBasedIndex - 1;
+        return zeroBasedIndex;
     }
 }

@@ -10,21 +10,21 @@ import aries.task.TaskList;
  * It reads user input and displays messages to the user.
  */
 public class Ui {
-    private static final String line = "____________________________________";
+    private static final String SEPARATOR = "____________________________________";
     private final Scanner scanner = new Scanner(System.in);
 
     /**
      * Greets the user with a welcome message.
      */
-    public String greet() {
+    public String showWelcomeMessage() {
         return ("Hello! I'm Aries.\n" + "What can I do for you?");
     }
 
     /**
      * Bids farewell to the user and closes the scanner.
      */
-    public String exit() {
-        close();
+    public String showExitMessage() {
+        closeScanner();
         return ("Bye. Hope to see you again soon!");
     }
 
@@ -38,18 +38,9 @@ public class Ui {
     }
 
     /**
-     * Displays an error message to the user.
-     *
-     * @param message The error message to be displayed.
-     */
-    public String showError(String message) {
-        return message;
-    }
-
-    /**
      * Closes the scanner to prevent resource leaks.
      */
-    public void close() {
+    public void closeScanner() {
         scanner.close();
     }
 
@@ -60,12 +51,12 @@ public class Ui {
      */
     public String showTaskList(TaskList tasks) {
         StringBuilder sb = new StringBuilder();
-        sb.append(line).append("\n");
+        sb.append(SEPARATOR).append("\n");
         sb.append("Here are the tasks in your list:\n");
         for (int i = 0; i < tasks.size(); i++) {
             sb.append((i + 1) + ". " + tasks.get(i) + "\n");
         }
-        sb.append(line);
+        sb.append(SEPARATOR);
         return sb.toString();
     }
 
@@ -117,16 +108,18 @@ public class Ui {
      */
     public String showFoundTasks(TaskList foundTasks) {
         StringBuilder sb = new StringBuilder();
-        sb.append(line).append("\n");
+        sb.append(SEPARATOR).append("\n");
+
         if (foundTasks.isEmpty()) {
             sb.append("No matching tasks found.");
         } else {
-            sb.append("Here are the matching tasks in your list:");
+            sb.append("Here are the matching tasks in your list:" + "\n");
             for (int i = 0; i < foundTasks.size(); i++) {
                 sb.append((i + 1) + ". " + foundTasks.get(i) + "\n");
             }
         }
-        sb.append(line);
+
+        sb.append(SEPARATOR);
         return sb.toString();
     }
 }

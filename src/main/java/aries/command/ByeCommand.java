@@ -9,6 +9,6 @@ import aries.ui.Ui;
 public class ByeCommand implements Command {
     @Override
     public CommandResult execute(TaskList tasks, Ui ui) {
-        return new CommandResult(ui.exit(), false, true);
+        return new CommandResult(ui.showExitMessage(), false, true);
     }
 }

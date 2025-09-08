@@ -21,6 +21,7 @@ public class Storage {
      * @param filePath the path to the file where tasks will be stored
      */
     public Storage(String filePath) {
+        assert filePath != null : "File path cannot be null";
         this.file = new File(filePath);
     }
 
@@ -30,7 +31,7 @@ public class Storage {
      *
      * @return the loaded TaskList
      */
-    public TaskList load() {
+    public TaskList loadTaskList() {
         if (!file.exists()) {
             return new TaskList();
         }
@@ -48,7 +49,8 @@ public class Storage {
      *
      * @param tasks the TaskList to save
      */
-    public void save(TaskList tasks) {
+    public void saveTaskList(TaskList tasks) {
+        assert tasks != null : "tasks to save cannot be null";
         File parent = file.getParentFile();
 
         if (parent != null && !parent.exists()) {
