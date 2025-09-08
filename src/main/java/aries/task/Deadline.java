@@ -20,6 +20,8 @@ public class Deadline extends Task {
      */
     public Deadline(String description, String by) {
         super(description);
+        assert by != null : "Due date/time cannot be null";
+        assert !by.isEmpty() : "Due date/time cannot be empty";
         this.by = DateTime.parse(by);
     }
 

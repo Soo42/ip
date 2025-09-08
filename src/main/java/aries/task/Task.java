@@ -19,6 +19,8 @@ public abstract class Task implements Serializable {
      * @param description The description of the task.
      */
     public Task(String description) {
+        assert description != null : "Description cannot be null";
+        assert !description.isEmpty() : "Description cannot be empty";
         this.description = description;
         this.isDone = false;
     }
