@@ -28,7 +28,7 @@ public class ToDoCommand implements Command {
         }
 
         Task t = new Todo(description);
-        tasks.add(t);
+        tasks.addTask(t);
         return new CommandResult(ui.showAddedString(tasks), true, false);
     }
 }

@@ -30,7 +30,7 @@ public class Storage {
      *
      * @return the loaded TaskList
      */
-    public TaskList load() {
+    public TaskList loadTaskList() {
         if (!file.exists()) {
             return new TaskList();
         }
@@ -48,7 +48,7 @@ public class Storage {
      *
      * @param tasks the TaskList to save
      */
-    public void save(TaskList tasks) {
+    public void saveTaskList(TaskList tasks) {
         File parent = file.getParentFile();
 
         if (parent != null && !parent.exists()) {

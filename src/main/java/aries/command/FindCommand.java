@@ -25,7 +25,7 @@ public class FindCommand implements Command {
         for (int i = 0; i < tasks.size(); i++) {
             Task task = tasks.get(i);
             if (task.getDescription().contains(keyword)) {
-                foundTasks.add(task);
+                foundTasks.addTask(task);
             }
         }
 

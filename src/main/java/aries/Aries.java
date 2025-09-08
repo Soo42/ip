@@ -26,7 +26,7 @@ public class Aries {
     public Aries() {
         this.ui = new Ui();
         this.storage = new Storage(DEFAULT_FILE_PATH);
-        this.tasks = storage.load();
+        this.tasks = storage.loadTaskList();
     }
 
     public String getResponse(String input) {
@@ -38,7 +38,7 @@ public class Aries {
             commandType = command.getClass().getSimpleName();
 
             if (hasChanged) {
-                storage.save(tasks);
+                storage.saveTaskList(tasks);
             }
 
             if (isExit) {
@@ -57,6 +57,6 @@ public class Aries {
     }
 
     public String getWelcomeMessage() {
-        return "Hello! I'm Aries!\nWhat can I do for you?";
+        return ui.showWelcomeMessage();
     }
 }

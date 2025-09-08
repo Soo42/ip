@@ -24,7 +24,7 @@ public class TaskList implements Serializable {
      *
      * @param t The task to be added.
      */
-    public void add(Task t) {
+    public void addTask(Task t) {
         tasks.add(t);
     }
 
@@ -33,7 +33,7 @@ public class TaskList implements Serializable {
      *
      * @param index The index of the task to be removed.
      */
-    public void remove(int index) {
+    public void removeTask(int index) {
         tasks.remove(index);
     }
 

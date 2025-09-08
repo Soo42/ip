@@ -53,6 +53,7 @@ public class DateTime {
      * @return the formatted date/time string
      */
     public static String format(LocalDateTime dateTime) {
-        return dateTime.format(DateTimeFormatter.ofPattern("MMM d yyyy, h:mma")).toUpperCase();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MMM d yyyy, h:mma");
+        return dateTime.format(formatter).toUpperCase();
     }
 }

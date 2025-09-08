@@ -7,6 +7,8 @@ import java.io.Serializable;
  */
 public abstract class Task implements Serializable {
     private static final long serialVersionUID = 1L;
+    private static final String DONE_ICON = "X";
+    private static final String NOT_DONE_ICON = " ";
 
     protected String description;
     protected boolean isDone;
@@ -27,7 +29,7 @@ public abstract class Task implements Serializable {
      * @return "X" if the task is done, otherwise a space " ".
      */
     public String getStatusIcon() {
-        return (isDone ? "X" : " ");
+        return (isDone ? DONE_ICON : NOT_DONE_ICON);
     }
 
     /**
