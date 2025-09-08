@@ -21,6 +21,15 @@ public class TaskList implements Serializable {
     }
 
     /**
+     * Constructs a TaskList with the given list of tasks.
+     *
+     * @param tasks The initial list of tasks.
+     */
+    public TaskList(List<Task> tasks) {
+        this.tasks = tasks;
+    }
+
+    /**
      * Adds a task to the list.
      *
      * @param t The task to be added.
@@ -71,6 +80,12 @@ public class TaskList implements Serializable {
      */
     public boolean isEmpty() {
         return tasks.isEmpty();
+    }
+
+    public List<Task> findTaskByKeyword(String keyword) {
+        return tasks.stream()
+                .filter(task -> task.getDescription().contains(keyword))
+                .toList();
     }
 
     @Override
