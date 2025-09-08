@@ -36,7 +36,7 @@ public class DeadlineCommand implements Command {
         String desc = parts[0].trim();
         String by = parts[1].trim();
         Task t = new Deadline(desc, by);
-        tasks.add(t);
+        tasks.addTask(t);
         return new CommandResult(ui.showAddedString(tasks), true, false);
     }
 }

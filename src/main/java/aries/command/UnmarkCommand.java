@@ -23,8 +23,8 @@ public class UnmarkCommand implements Command {
 
     @Override
     public CommandResult execute(TaskList tasks, Ui ui) throws AriesException {
-        int index = IndexHandling.getValidIndex(this.index, tasks.size());
-        Task taskToUnmark = tasks.get(index);
+        int zeroBasedIndex = IndexHandling.getValidIndex(this.index, tasks.size());
+        Task taskToUnmark = tasks.get(zeroBasedIndex);
         taskToUnmark.unmark();
         return new CommandResult(ui.showMarkedStatus(taskToUnmark, false), true, false);
     }

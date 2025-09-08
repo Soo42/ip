@@ -25,7 +25,7 @@ public class TaskList implements Serializable {
      *
      * @param t The task to be added.
      */
-    public void add(Task t) {
+    public void addTask(Task t) {
         assert t != null : "Task cannot be null";
         int sizeBeforeAdd = tasks.size();
         tasks.add(t);
@@ -37,7 +37,7 @@ public class TaskList implements Serializable {
      *
      * @param index The index of the task to be removed.
      */
-    public void remove(int index) {
+    public void removeTask(int index) {
         assert index >= 0 && index < tasks.size() : "Index out of bounds";
         int sizeBeforeRemove = tasks.size();
         tasks.remove(index);

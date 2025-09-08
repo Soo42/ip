@@ -9,9 +9,10 @@ import aries.util.DateTime;
  */
 public class Events extends Task {
     private static final long serialVersionUID = 1L;
+    private static final String TYPE_ICON = "E";
 
-    protected LocalDateTime from;
-    protected LocalDateTime to;
+    protected LocalDateTime fromDate;
+    protected LocalDateTime toDate;
 
     /**
      * Constructs an Events object with the specified description, start time, and end time.
@@ -27,12 +28,17 @@ public class Events extends Task {
         assert to != null : "End time cannot be null";
         assert !to.isEmpty() : "End time cannot be empty";
         assert DateTime.parse(from).isBefore(DateTime.parse(to)) : "Start time must be before end time";
-        this.from = DateTime.parse(from);
-        this.to = DateTime.parse(to);
+        this.fromDate = DateTime.parse(from);
+        this.toDate = DateTime.parse(to);
     }
 
     @Override
     public String toString() {
-        return "[E] " + super.toString() + " (from: " + DateTime.format(from) + " to: " + DateTime.format(to) + ")";
+        StringBuilder sb = new StringBuilder();
+        String fromDateString = " (from: " + DateTime.format(fromDate) + ")";
+        String toDateString = " (to: " + DateTime.format(toDate) + ")";
+        sb.append("[").append(TYPE_ICON).append("] ").append(super.toString())
+            .append(fromDateString).append(toDateString);
+        return sb.toString();
     }
 }

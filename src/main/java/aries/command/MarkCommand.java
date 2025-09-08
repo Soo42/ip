@@ -23,8 +23,8 @@ public class MarkCommand implements Command {
 
     @Override
     public CommandResult execute(TaskList tasks, Ui ui) throws AriesException {
-        int index = IndexHandling.getValidIndex(this.index, tasks.size());
-        Task taskToMark = tasks.get(index);
+        int zeroBasedIndex = IndexHandling.getValidIndex(this.index, tasks.size());
+        Task taskToMark = tasks.get(zeroBasedIndex);
         taskToMark.markAsDone();
         return new CommandResult(ui.showMarkedStatus(taskToMark, true), true, false);
     }
