@@ -49,12 +49,23 @@ public abstract class Task implements Serializable {
     }
 
     /**
+     * Returns a unique key for the task.
+     *
+     * @return The unique key of the task.
+     */
+    public abstract String getKey();
+
+    /**
      * Returns the description of the task.
      *
      * @return The task description.
      */
     public String getDescription() {
         return this.description;
+    }
+
+    public String norm(String str) {
+        return str.replaceAll("\\s+", " ").trim().toLowerCase();
     }
 
     @Override

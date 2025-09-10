@@ -33,6 +33,11 @@ public class Events extends Task {
     }
 
     @Override
+    public String getKey() {
+        return "E:" + norm(description) + ":" + DateTime.format(fromDate) + ":" + DateTime.format(toDate);
+    }
+
+    @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
         String fromDateString = " (from: " + DateTime.format(fromDate) + ")";
