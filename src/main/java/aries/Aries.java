@@ -27,6 +27,11 @@ public class Aries {
         this.ui = new Ui();
         this.storage = new Storage(DEFAULT_FILE_PATH);
         this.tasks = storage.loadTaskList();
+        try {
+            tasks.rebuildKeys();
+        } catch (AriesException e) {
+            System.out.println("Error rebuilding task keys: " + e.getMessage());
+        }
     }
 
     public String getResponse(String input) {

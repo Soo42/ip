@@ -16,6 +16,11 @@ public class Todo extends Task {
     }
 
     @Override
+    public String getKey() {
+        return "T:" + norm(description);
+    }
+
+    @Override
     public String toString() {
         return "[T] " + super.toString();
     }
