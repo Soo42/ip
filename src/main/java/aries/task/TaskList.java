@@ -67,7 +67,7 @@ public class TaskList implements Serializable {
         } else {
             keys.clear();
         }
-        
+
         for (Task t : tasks) {
             String key = t.getKey();
             if (keys.contains(key)) {
