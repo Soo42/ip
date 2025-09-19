@@ -32,6 +32,12 @@ public class Aries {
         }
     }
 
+    /**
+     * Processes a user input command and returns the response.
+     *
+     * @param input The user input command.
+     * @return The response from executing the command.
+     */
     public String getResponse(String input) {
         try {
             Command command = CommandParser.parse(input);
@@ -55,14 +61,30 @@ public class Aries {
         }
     }
 
+    /**
+     * Gets the type of the last executed command.
+     *
+     * @return The command type as a string.
+     */
     public String getCommandType() {
         return commandType;
     }
 
+    /**
+     * Gets the welcome message from the UI.
+     *
+     * @return The welcome message string.
+     */
     public String getWelcomeMessage() {
         return ui.showWelcomeMessage();
     }
 
+    /**
+     * Checks if the given input is an exit command.
+     *
+     * @param input The user input command.
+     * @return True if the command is an exit command, false otherwise.
+     */
     public boolean isExitCommand(String input) {
         try {
             Command command = CommandParser.parse(input);
