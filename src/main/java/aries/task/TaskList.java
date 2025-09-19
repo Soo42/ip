@@ -115,6 +115,12 @@ public class TaskList implements Serializable {
         return tasks.isEmpty();
     }
 
+    /**
+     * Finds tasks in the list that contain the given keyword.
+     *
+     * @param keyword The keyword to search for.
+     * @return A list of tasks that contain the keyword.
+     */
     public List<Task> findTaskByKeyword(String keyword) {
         return tasks.stream()
                 .filter(task -> task.getDescription().contains(keyword))

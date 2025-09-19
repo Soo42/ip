@@ -20,8 +20,6 @@ public class Aries {
 
     /**
      * Constructor for the Aries application.
-     *
-     * @param filePath The file path for the storage.
      */
     public Aries() {
         this.ui = new Ui();
