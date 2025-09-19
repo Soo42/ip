@@ -31,9 +31,9 @@ public class EventCommand implements Command {
         int toIndex = description.indexOf(" /to ");
         boolean hasFrom = fromIndex != -1;
         boolean hasTo = toIndex != -1;
-        boolean validOrder = hasFrom && hasTo && toIndex > fromIndex;
+        boolean hasValidOrder = hasFrom && hasTo && toIndex > fromIndex;
 
-        if (!validOrder) {
+        if (!hasValidOrder) {
             throw new AriesException("OOPS!!! The event format should be: event <description>"
                     + " /from <start time> /to <end time>");
         }
