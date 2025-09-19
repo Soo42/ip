@@ -62,4 +62,14 @@ public class Aries {
     public String getWelcomeMessage() {
         return ui.showWelcomeMessage();
     }
+
+    public boolean isExitCommand(String input) {
+        try {
+            Command command = CommandParser.parse(input);
+            CommandResult result = command.execute(tasks, ui);
+            return result.isExit();
+        } catch (AriesException e) {
+            return false;
+        }
+    }
 }
