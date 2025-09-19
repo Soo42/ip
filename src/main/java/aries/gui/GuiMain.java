@@ -22,6 +22,7 @@ public class GuiMain extends Application {
             FXMLLoader fxmlLoader = new FXMLLoader(GuiMain.class.getResource("/view/GuiMainWindow.fxml"));
             AnchorPane ap = fxmlLoader.load();
             Scene scene = new Scene(ap);
+            stage.setTitle("Aries - Your Personal Task Manager");
             stage.setScene(scene);
             stage.setMinHeight(220);
             stage.setMinWidth(417);
