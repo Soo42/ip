@@ -3,7 +3,7 @@
 Aries is a task manager with a friendly JavaFX chat GUI.
 It supports **todos**, **deadlines**, **events**, listing and searching tasks, persistence to disk, and a clean exit via bye. Duplicate tasks are detected by a generated task key so you don’t accidentally add the same thing twice.
 
-![UI](../data/Ui.png)
+![UI](./Ui.png)
 
 ## Quick start
 1. Ensure you have Java 17 or above installed in your Computer.
