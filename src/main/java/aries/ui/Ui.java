@@ -122,4 +122,24 @@ public class Ui {
         sb.append(SEPARATOR);
         return sb.toString();
     }
+
+    /**
+     * Displays the list of available commands to the user.
+     *
+     * @return A string listing all available commands.
+     */
+    public String showAvailableCommands() {
+        return String.join("\n",
+            "list      : Lists all previously added tasks.",
+            "todo      : Add a todo task.",
+            "deadline  : Add a task with a specific time.",
+            "event     : Add an event with a time range.",
+            "find      : Find tasks containing a keyword.",
+            "mark      : Mark a task as done.",
+            "unmark    : Mark a task as not done.",
+            "delete    : Delete a task by its index.",
+            "help      : Show available commands.",
+            "bye       : Exit the program."
+        );
+    }
 }
