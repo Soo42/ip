@@ -42,6 +42,8 @@ public class CommandParser {
             return new DeleteCommand(description);
         case "find":
             return new FindCommand(description);
+        case "help":
+            return new HelpCommand();
         default:
             return new UnknownCommand();
         }
